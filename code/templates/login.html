@@ -1,0 +1,129 @@
+<?php if($templates=='login'){ ?>
+    <div class="container">
+        <div class="row justify-content-center align-items-center vh-100">
+            <div class="col-lg-5">
+                <div class="w-100 text-center py-5">
+                    <a href="/">
+                        <img src="<?=$setting['template']?>/assets/img/logo.svg" class="width logo-light" style="--width:150px" alt="logo">
+                        <img src="<?=$setting['template']?>/assets/img/logo-dark.svg" class="width logo-dark" style="--width:150px" alt="logo">
+                    </a>
+                </div>
+                <div class="card border-0 bg-body bg-opacity-50 shadow rounded-4">
+                    <div class="card-body p-4">
+                        <h3 class="text-center"><?=$jatbi->lang("Đăng nhập")?></h3>
+                        <form method="POST" action="/login">
+                            <div class="mb-3">
+                                <label class="form-label"><?=$jatbi->lang("Email")?></label>
+                                <input type="email" name="email" placeholder="<?=$jatbi->lang('Email')?>" class="form-control py-3 rounded-4">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label"><?=$jatbi->lang("Mật khẩu")?></label>
+                                <input type="password" name="password" placeholder="<?=$jatbi->lang('Mật khẩu')?>" class="form-control py-3 rounded-4">
+                            </div>
+                            <div class="d-flex mt-1 justify-content-between align-items-center">
+                                <div class="form-check">
+                                    <input class="form-check-input input-primary" name="remember" type="checkbox" id="customCheckc1" checked="" value="1">
+                                    <label class="form-check-label text-muted" for="customCheckc1"><?=$jatbi->lang("Nhớ tài khoản")?></label>
+                                </div>
+                                <h6 class="text-secondary f-w-400 mb-0"><a href="/forgot-password" class="link-primary" data-pjax><?=$jatbi->lang("Quên mật khẩu")?></a></h6>
+                            </div>
+                            <div class="d-grid mt-4">
+                                <button class="btn btn-primary py-3 rounded-pill" type="submit" data-action="submit" data-load="/"><?=$jatbi->lang("Đăng nhập")?></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+<?php if($templates=='forgot'){ ?>
+    <div class="container">
+        <div class="row justify-content-center align-items-center  vh-100">
+            <div class="col-lg-5">
+               <div class="w-100 text-center py-5">
+                    <a href="/">
+                        <img src="<?=$setting['template']?>/assets/img/logo.svg" class="width logo-light" style="--width:150px" alt="logo">
+                        <img src="<?=$setting['template']?>/assets/img/logo-dark.svg" class="width logo-dark" style="--width:150px" alt="logo">
+                    </a>
+                </div>
+                <div class="card border-0 bg-body bg-opacity-50 shadow rounded-4 rounded-4">
+                    <div class="card-body p-4">
+                        <h3 class="text-center"><?=$jatbi->lang("Quên mật khẩu")?></h3>
+                        <form method="POST" action="/forgot-password">
+                            <div class="mb-3">
+                                <label class="form-label"><?=$jatbi->lang("Email")?></label>
+                                <input type="email" name="email" placeholder="<?=$jatbi->lang('Email')?>" class="form-control py-3 rounded-4">
+                            </div>
+                            <div class="d-grid mt-4">
+                                <button class="btn btn-primary py-3 rounded-pill" type="submit" data-action="submit" ><?=$jatbi->lang("Quên mật khẩu")?></button>
+                            </div>
+                        </form>
+                        <div class="d-flex justify-content-between align-items-end mt-4">
+                            <h6 class="f-w-500 mb-0"><?=$jatbi->lang("Bạn đã có tài khoản?")?></h6><a href="/login" class="link-primary" data-pjax><?=$jatbi->lang("Đăng nhập")?></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+<?php if($templates=='register'){ ?>
+    <div class="container">
+        <div class="row justify-content-center align-items-center  vh-100">
+            <div class="col-lg-5">
+                <h3 class="text-center"><?=$jatbi->lang("Đăng ký")?></h3>
+                <div class="card border-0 bg-body bg-opacity-50 shadow rounded-4 rounded-4">
+                    <div class="card-body p-4 pt-3">
+                        <div class="text-center">
+                            <div class="d-grid my-3">
+                                <a href="<?=$login_google?>" class="py-3 border bg-body-tertiary rounded-pill text-muted"><i class="ti ti-brand-google-filled me-2"></i> <span><?=$jatbi->lang("Đăng nhập với Google")?></span></a>
+                            </div>
+                            <div class="d-grid my-3">
+                                <a href="<?=$login_apple?>" class="py-3 border bg-body-tertiary rounded-pill text-muted"><i class="ti ti-brand-apple-filled me-2"></i> <span><?=$jatbi->lang("Đăng nhập với Apple")?></span></a>
+                            </div>
+                        </div>
+                        <div class="saprator my-3"><span class="rounded-pill"><?=$jatbi->lang("Hoặc")?></span>
+                        </div>
+                        <form method="POST" action="/register">
+                            <div class="mb-3">
+                                <label class="form-label"><?=$jatbi->lang("Họ & Tên")?></label>
+                                <input type="text" name="name" placeholder="<?=$jatbi->lang('Họ & Tên')?>" class="form-control py-3 rounded-4">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label"><?=$jatbi->lang("Email")?></label>
+                                <div class=" input-group">
+                                    <input type="email" name="email" placeholder="<?=$jatbi->lang('Email')?>" class="form-control py-3 rounded-start-4">
+                                    <button class="btn btn-danger py-3 rounded-end-4" type="button" data-action="click" data-url="/email-comfirm" data-form='{"email":"#email.val"}' data-alert="true"><?=$jatbi->lang("Xác thực")?></button>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label"><?=$jatbi->lang("Mã xác thực")?></label>
+                                <input type="tel" name="email-comfirm" placeholder="<?=$jatbi->lang('Mã xác thực')?>" class="form-control py-3 rounded-4">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label"><?=$jatbi->lang("Mật khẩu")?></label>
+                                <input type="password" name="password" placeholder="<?=$jatbi->lang('Mật khẩu')?>" class="form-control py-3 rounded-4">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label"><?=$jatbi->lang("Xác thực mật khẩu")?></label>
+                                <input type="password" name="password-comfirm" placeholder="<?=$jatbi->lang('Xác thực mật khẩu')?>" class="form-control py-3 rounded-4">
+                            </div>
+                            <div class="mb-4 d-flex align-items-start">
+                                <i class="ti ti-checklist fs-2 me-2 text-danger"></i>
+                                <?=$jatbi->lang('<p class="text-muted mb-0">Bằng cách nhấp vào Đăng ký, bạn đồng ý với <a href="https://ellm.io/dieu-khoan-su-dung/" class="fw-semibold text-danger" target="_blank">Điều khoản</a>, <a href="https://ellm.io/chinh-sach-bao-mat/" class="fw-semibold text-danger" target="_blank">Chính sách quyền riêng tư</a> của chúng tôi. Bạn có thể nhận được thông báo của chúng tôi qua Email và hủy nhận bất kỳ lúc nào.</p>')?>
+                                
+                            </div>
+                            <div class="d-grid mt-4">
+                                <button class="btn btn-danger py-3 rounded-pill" type="submit" data-action="submit"  data-load="/" data-alert="true"><?=$jatbi->lang("Đăng ký")?></button>
+                            </div>
+                        </form>
+                        <div class="d-flex justify-content-between align-items-end mt-4">
+                            <h6 class="f-w-500 mb-0"><?=$jatbi->lang("Bạn đã có tài khoản?")?></h6><a href="/login" class="link-danger" data-pjax><?=$jatbi->lang("Đăng nhập")?></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>

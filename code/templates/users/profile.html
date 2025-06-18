@@ -1,0 +1,213 @@
+<div class="page-container page-users pb-5">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3 order-2 order-lg-1">
+				<div class="mb-3 pt-0">
+					<strong class="p-3 d-block"><?=$jatbi->lang("Tài khoản")?></strong>
+					<div class="list-group bg-body bg-opacity-50 border-0 list-group-flush shadow rounded-4">
+						<a href="/users/profile" data-pjax class="p-3 d-block bg-transparent list-group-item-action list-group-item w-100 text-start"><i class="ti ti-user me-2 btn btn-sm btn-light"></i><?=$jatbi->lang("Thông tin")?></a>
+						<a href="/users/notification" data-pjax class="p-3 d-block bg-transparent list-group-item-action list-group-item w-100 text-start"><i class="ti ti-bell me-2 btn btn-sm btn-light"></i><?=$jatbi->lang("Thông báo")?></a>
+						<a href="/users/logs" data-pjax class="p-3 d-block bg-transparent list-group-item-action list-group-item w-100 text-start"><i class="ti ti-logs me-2 btn btn-sm btn-light"></i><?=$jatbi->lang("Nhật ký")?></a>
+						<a href="/users/settings" data-pjax class="p-3 d-block bg-transparent list-group-item-action list-group-item w-100 text-start"><i class="ti ti-settings me-2 btn btn-sm btn-light"></i><?=$jatbi->lang("Cài đặt")?></a>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-9 order-1 order-lg-2">
+				<div class="mb-3 d-flex justify-content-between align-items-center">
+			        <div>
+			            <h4 class="mb-0 fw-bold text-body"><?=$title?></h4>
+			            <ul class="breadcrumb small mb-0">
+			                <li class="breadcrumb-item small">
+			                    <a href="/" class="pjax-load link-secondary"><?=$jatbi->lang("Trang chủ")?></a>
+			                </li>
+			                <li class="breadcrumb-item small text-body" aria-current="page"><?=$title?></li>
+			            </ul>
+			        </div>
+			    </div>
+				<?php if($router=='profile'){ ?>
+					<div class="row justify-content-center">
+						<div class="col-lg-4 col-6 text-center text-body">
+							<img data-src="/<?=$account['avatar']?>?type=thumb" class="w-100 rounded-circle p-2  lazyload"> 
+							<h3 class="mt-4 fw-bold"><?=$account['name']?></h3>
+							<p><?=$account['email']?></p>
+						</div>
+					</div>
+					<div class="row g-3 mt-4 justify-content-center">
+						<div class="col-lg-12 col-xl-8">
+							<div class="card bg-body rounded-4 p-4 border-0 shadow bg-opacity-50">
+								<div class="row g-3">
+									<div class="col-lg-6">
+										<span class="fw-bold"><?=$jatbi->lang('Mã của bạn')?>:</span>
+										<span class="text-semibold">#<?=$account['id']?></span>
+									</div>
+									<div class="col-lg-6">
+										<span class="fw-bold"><?=$jatbi->lang('Họ & Tên')?>:</span>
+										<span class="text-semibold"><?=$account['name']?></span>
+									</div>
+									<div class="col-lg-6">
+										<span class="fw-bold"><?=$jatbi->lang('Email')?>:</span>
+										<span class="text-semibold"><?=$account['email']?></span>
+									</div>
+									<div class="col-lg-6">
+										<span class="fw-bold"><?=$jatbi->lang('Tài khoản')?>:</span>
+										<span class="text-semibold"><?=$account['account']?></span>
+									</div>
+									<div class="col-lg-6">
+										<span class="fw-bold"><?=$jatbi->lang('Điện thoại')?>:</span>
+										<span class="text-semibold"><?=$account['phone']?></span>
+									</div>
+									<div class="col-lg-6">
+										<span class="fw-bold"><?=$jatbi->lang('Ngày sinh')?>:</span>
+										<span class="text-semibold"><?=$account['birthday']?></span>
+									</div>
+									<div class="col-lg-6">
+										<span class="fw-bold"><?=$jatbi->lang('Giới tính')?>:</span>
+										<span class="text-semibold"><?=$account['gender']==1?$jatbi->lang("Nữ"):$jatbi->lang("Nam")?></span>
+									</div>
+									<div class="col-lg-6">
+										<span class="fw-bold"><?=$jatbi->lang('Ngày đăng ký')?>:</span>
+										<span class="text-semibold"><?=$account['date']?></span>
+									</div>
+								</div>
+							</div>
+							<div class="list-group bg-body bg-opacity-50 border-0 list-group-flush shadow rounded-4 mt-4">
+								<button type="button" class="p-3 d-block bg-transparent list-group-item-action list-group-item w-100 text-start" data-action="modal" data-alert="true" data-load="this" data-url="/users/change-password">
+									<i class="ti ti-key me-2"></i> <?=$jatbi->lang('Đổi mật khẩu')?>	
+								</button>
+								<button type="button" class="p-3 d-block bg-transparent list-group-item-action list-group-item w-100 text-start" data-action="modal" data-alert="true" data-load="this" data-url="/users/change-infomation">
+									<i class="ti ti-user-exclamation me-2"></i> <?=$jatbi->lang('Cập nhật thông tin')?>
+								</button>
+							</div>
+						</div>
+					</div>
+				<?php } ?>
+				<?php if($router=='notification'){ ?>
+				    <div class="position-fixed bottom right z-3 dropup-center dropup" style="--bottom:20px;--right:20px">
+				        <button class="btn btn-info rounded-circle width height d-flex align-items-center justify-content-center " style="--width:60px;--height:60px;" data-bs-toggle="dropdown" aria-expanded="false">
+				          <i class="ti ti-menu-2 fs-2" aria-hidden="true"></i>
+				        </button>
+				        <ul class="dropdown-menu min-width bg-transparent border-0 justify-content-center p-2" style="--min-width:100%">
+				            <li class="my-2">
+				                <a class="btn rounded-circle btn-danger width height d-flex justify-content-center align-items-center p-1" data-action="modal" data-checkbox="input.checker" data-url="/users/notification-deleted" style="--width:50px;--height:50px;">
+				                    <i class="ti ti-trash fs-3" aria-hidden="true"></i>
+				                </a>
+				            </li>
+				        </ul>
+				    </div>
+					<div class="card bg-body bg-opacity-50 shadow border-0 rounded-4">
+						<div class="card-body">
+				            <table id="datatable" 
+				                    data-table 
+				                    class="table align-middle" 
+				                    data-type="POST" 
+				                    data-server="true" 
+				                    data-processing="true" 
+				                    data-page-length="10"
+				                    data-searching="true"
+				                    data-paging="true"
+				                    data-state-save='true'
+				                    style="width:100%">
+				                <thead>
+				                    <tr>
+                    					<th data-name="checkbox" data-orderable="false" class="text-nowrap " data-visible="true" data-class="text-center"><div class="form-check"><input class="form-check-input checkall" type="checkbox" value="" data-checkbox="input.checker"></div></th>
+				                        <th data-name="content" data-orderable="true" class="text-nowrap"  data-class="text-nowrap"><?=$jatbi->lang("Nội dung")?></th>              
+				                        <th data-name="date" data-orderable="true" class="text-nowrap"  data-class="text-nowrap"><?=$jatbi->lang("Ngày")?></th>            
+				                        <th data-name="url" data-orderable="false" class="text-nowrap" data-class="text-center"><?=$jatbi->lang("Xem")?></th>
+				                    </tr>
+				                </thead>
+				            </table>
+						</div>
+					</div>
+				<?php } ?>
+				<?php if($router=='logs'){ ?>
+					<div class="card bg-body bg-opacity-50 shadow border-0 rounded-4">
+						<div class="card-body">
+				            <table id="datatable" 
+				                    data-table 
+				                    class="table align-middle" 
+				                    data-type="POST" 
+				                    data-server="true" 
+				                    data-processing="true" 
+				                    data-page-length="10"
+				                    data-searching="true"
+				                    data-paging="true"
+				                    data-state-save='true'
+				                    style="width:100%">
+				                <thead>
+				                    <tr>
+				                        <th data-name="dispatch" data-orderable="true" class="text-nowrap" data-class="text-nowrap"><?=$jatbi->lang("Patch")?></th>
+				                        <th data-name="action" data-orderable="true" class="text-nowrap"  data-class="text-nowrap"><?=$jatbi->lang("Hành động")?></th>    
+				                        <th data-name="ip" data-orderable="true" class="text-nowrap"  data-class="text-nowrap"><?=$jatbi->lang("IP")?></th>                
+				                        <th data-name="date" data-orderable="true" class="text-nowrap"  data-class="text-nowrap"><?=$jatbi->lang("Ngày")?></th>            
+				                        <th data-name="url" data-orderable="true" class="text-nowrap" ><?=$jatbi->lang("URL")?></th>
+				                    </tr>
+				                </thead>
+				            </table>
+						</div>
+					</div>
+				<?php } ?>
+				<?php if($router=='settings'){ ?>
+					<div class="card shadow rounded-4 bg-body bg-opacity-50">
+						<div class="card-body">
+							<div class="p-4 border-0 border-bottom">
+								<h5 class="fw-bold mb-4"><?=$jatbi->lang('Tài khoản')?></h5>
+								<div class="row g-2 align-items-center mb-3">
+									<div class="col-lg-6">
+										<div class="form-check form-switch" data-bs-toggle="modal" data-bs-target=".modal-notification">
+										  <input class="form-check-input py-2 px-3 me-3"type="checkbox" role="switch" id="notification" <?=$data['notification']==1?'checked':''?> >
+										  <label class="form-check-label" for="notification"><?=$jatbi->lang('Nhận thông báo')?></label>
+										</div>
+										<div class="modal fade modal-notification" tabindex="-1" data-bs-backdrop="static">
+								            <div class="modal-dialog modal-dialog-centered standalone">
+								                <div class="modal-content rounded-5">
+								                    <div class="modal-body">
+								                        <div class="py-3">
+								                            <h5 class="fw-bold py-2 p-2"><?=$jatbi->lang("Chúng tôi muốn gửi thông báo cho bạn")?></h5>
+								                              <p class="p-2 py-1">
+								                                <?=$jatbi->lang("Thông báo có thể bao gồm cảnh báo, âm thanh và huy hiệu biểu tượng. Nội dung sẽ là những biến động bạn đang sử dụng tại ELLM, chúng tôi sẽ không gửi thông báo đến Email nếu không có sự đồng ý của bạn từ Cài Đặt.")?>
+								                              </p>
+								                        </div>
+								                        <div class="text-center d-flex justify-content-center">
+								                            <button type="button" class="btn btn-light rounded-pill px-4 mx-1" data-action="click" data-url="/users/settings/notification-no" data-load="this" data-alert="true" data-bs-dismiss="modal" aria-label="Close"><?=$jatbi->lang("Không")?></button>
+								                            <button type="button" class="btn btn-danger rounded-pill px-4 mx-1" data-bs-dismiss="modal" id="subscribe-btn"><?=$jatbi->lang("Đồng ý")?></button>
+								                        </div>
+								                    </div>
+								                </div>
+								            </div>
+								        </div>
+									</div>
+									<div class="col-lg-6">
+										<div class="form-check form-switch">
+										  <input class="form-check-input py-2 px-3 me-3" data-action="click" data-url="/users/settings/notification_mail" data-alert="true" data-load="this" type="checkbox" role="switch" id="email" <?=$data['notification_mail']==1?'checked':''?>>
+										  <label class="form-check-label" for="email"><?=$jatbi->lang('Gửi thông báo đến mail')?></label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="p-4 border-0 rounded-3 mt-3">
+								<h5 class="fw-bold mb-4">API</h5>
+								<div class="row g-2 align-items-center mb-3">
+									<div class="col-lg-6">
+										<div class="form-check form-switch">
+										  <input class="form-check-input py-2 px-3 me-3" data-action="click" data-alert="true" data-load="this" data-url="/users/settings/api" type="checkbox" role="switch" id="api" <?=$data['api']==1?'checked':''?>>
+										  <label class="form-check-label" for="api"><?=$jatbi->lang('Kịch hoạt API')?></label>
+										</div>
+									</div>
+								</div>
+								<div class="row g-2 align-items-center mb-3">
+									<div class="col-lg-12">
+										<?=$jatbi->lang('Khóa bí mật API')?>
+									</div>
+									<div class="col-lg-12">
+										<textarea type="text" class="form-control p-2 h-min-60px mb-2 rounded-2 bg-body"><?=$data['access_token']?></textarea>
+										<small><span class="text-danger">*</span> <?=$jatbi->lang('Vui lòng không cung cấp cho người khác nếu không phải là bạn')?></small>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				<?php } ?>
+			</div>
+		</div>
+	</div>
+</div>

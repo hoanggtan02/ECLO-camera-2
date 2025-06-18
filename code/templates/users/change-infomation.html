@@ -1,0 +1,60 @@
+<div class="modal fade modal-load" tabindex="-1">
+	<div class="modal-dialog modal-dialog-centered  pt-standalone">
+		<div class="modal-content rounded-5">
+			<div class="d-flex w-100 justify-content-end align-items-center position-relative">
+				<button type="button" class="btn btn-primary position-absolute z-1 rounded-circle d-flex align-items-center justify-content-center width height top right" data-bs-dismiss="modal" aria-label="Close " style="--width:50px;--height:50px;--top:-5px;--right:-5px">
+					<i class="ti ti-x fs-4"></i>
+				</button>
+			</div>
+			<div class="modal-body">
+				<h5 class="fw-bold text-body mb-3"><?=$jatbi->lang("Thay đổi thông tin")?></h5>
+				<form method="POST" action="<?=$_SERVER['REQUEST_URI']?>">
+					<div class="mb-3">
+						<label><?=$jatbi->lang('Họ & Tên')?> <small class="text-danger">*</small></label>
+						<input placeholder="<?=$jatbi->lang('Họ & Tên')?>" type="text" name="name" value="<?=$account['name']?>" class="form-control py-3 rounded-4 bg-body-tertiary">
+					</div>
+					<div class="mb-3">
+						<label><?=$jatbi->lang('Điện thoại')?></label>
+						<input placeholder="<?=$jatbi->lang('Điện thoại')?>" type="text" name="phone" value="<?=$account['phone']?>" class="form-control py-3 rounded-4 bg-body-tertiary">
+					</div>
+					<div class="mb-3">
+						<label><?=$jatbi->lang('Ngày sinh')?></label>
+						<input placeholder="<?=$jatbi->lang('Ngày sinh')?>" type="date" name="birthday" value="<?=$account['birthday']?>" class="form-control py-3 rounded-4 bg-body-tertiary">
+					</div>
+					<div class="mb-3">
+						<label ><?=$jatbi->lang('Giới tính')?></label>
+						<select name="gender" class="form-control py-3 rounded-4 bg-body-tertiary" style="width:100%">
+							<option value="" disabled selected><?=$jatbi->lang('Giới tính')?></option>
+							<option value="1"  <?=($account['gender']=='1'?'selected':'')?>><?=$jatbi->lang('Nữ')?></option>
+							<option value="2"  <?=($account['gender']=='2'?'selected':'')?>><?=$jatbi->lang('Nam')?></option>
+						</select>
+					</div>
+					<div class="mb-3">
+						<label ><?=$jatbi->lang('Hình ảnh')?></label>
+						<div class="rounded-4 border p-3 bg-body">
+							<div class="d-flex justify-content-center align-items-center upload-files h-100">
+								<div class="text-center input-file" <?=$account['avatar']!=''?'  style="display: none;"' : ''?> >
+									<input type="file" id="btn-check" autocomplete="off" class="btn-check upload-file" data-router="/upload-images" >
+									<label class="btn me-2 p-0" for="btn-check">
+										<i class="ti ti-cloud-upload fs-1"></i>
+										<p><?=$jatbi->lang("Nhấn vào để tải hình ảnh của bạn lên")?></p>
+									</label>
+								</div>
+								<div class="show-file text-center position-relative" <?=$account['avatar']==''?'  style="display: none;"' : ''?> >
+									<img src="/<?=$account['avatar']?>" class="w-100 rounded-4 shadow images-container">
+									<div class="position-absolute end-0 bottom-0 p-2">
+										<button type="button" class="btn btn-sm btn-danger d-block rounded-circle width height" style="--width:50px;--height:50px;" id="remove-upload-file"><i class="ti ti-trash fs-5"></i></button>
+									</div>
+									<input type="hidden" name="images" class="value-file" value="<?=$account['avatar']?>">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="mb-3 text-end">
+						<button type="submit" class="btn btn-primary w-100 py-3 rounded-pill" data-action="submit" data-alert="true" data-load="this"><?=$jatbi->lang("Thay đổi")?></button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

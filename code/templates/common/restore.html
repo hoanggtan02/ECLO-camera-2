@@ -1,0 +1,16 @@
+<div class="modal fade modal-load" tabindex="-1">
+	<div class="modal-dialog modal-dialog-centered modal-sm pt-standalone">
+		<div class="modal-content rounded-5 bg-transparent border-0">
+			<div class="modal-body">
+				<form method="POST" action="<?=$_SERVER['REQUEST_URI']?>">
+					<div class="text-center pt-4">
+						<img src="/templates/assets/img/restore.svg" class="w-100">
+						<p class="my-4"><?=$modalContent ?? $jatbi->lang("Bạn có chắc chắn muốn phục hồi dữ liệu này.")?></p>
+						<button type="button" class="btn btn-light rounded-pill px-4" data-bs-dismiss="modal" aria-label="Close"><?=$jatbi->lang("Hủy")?></button>
+						<button type="submit" class="btn btn-primary rounded-pill px-4" data-bs-dismiss="modal" data-action="submit" data-alert="true" data-load="this"><?=$jatbi->lang("Đồng ý")?></button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,65 @@
+<div class="modal fade modal-load" tabindex="-1"  data-bs-backdrop="static">
+	<div class="modal-dialog modal-xl pt-standalone">
+		<div class="modal-content rounded-5">
+			<div class="d-flex w-100 justify-content-end align-items-center position-relative">
+				<button type="button" class="btn btn-primary position-absolute z-1 rounded-circle d-flex align-items-center justify-content-center width height top right" data-bs-dismiss="modal" aria-label="Close " style="--width:50px;--height:50px;--top:-5px;--right:-5px">
+					<i class="ti ti-x fs-4"></i>
+				</button>
+			</div>
+			<div class="modal-body">
+				<h5 class="fw-bold text-body mb-3"><?=$title?></h5>
+				<form method="POST" action="<?=$_SERVER['REQUEST_URI']?>">
+					<div class="row g-3">
+						<div class="col-lg-6">
+							<div class="mb-3">
+								<label class="fw-bold text-body mb-2"><?=$jatbi->lang("Tên")?> <span class="text-danger">*</span></label>
+								<input type="text" name="name" class="form-control py-3 rounded-4 bg-body-tertiary" placeholder="<?=$jatbi->lang("Tên")?>" value="<?=$data['name'] ?? ''?>">
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="mb-3">
+								<label class="fw-bold text-body mb-2"><?=$jatbi->lang("Trạng thái")?> <span class="text-danger">*</span></label>
+								<select data-select data-style="form-select bg-body-tertiary py-3 rounded-4 w-100" data-live-search="true" data-width="100%"  name="status">
+									<option value="A" <?=$data['status'] == 'A'?'selected':''?>><?=$jatbi->lang('Kích hoạt')?></option>
+									<option value="D" <?=$data['status'] == 'D'?'selected':''?>><?=$jatbi->lang('Không kích hoạt')?></option>
+								</select>
+							</div>
+						</div>
+						<div class="col-lg-12">
+							<div class="form-check mb-3">
+								<input class="form-check-input checkall" type="checkbox" value="" id="checkper" data-checkbox="input.permission-item">
+								<label class="form-check-label ps-2 pt-1" for="checkper">
+							  		<?=$jatbi->lang("Chọn tất cả")?>
+							  	</label>
+							</div>
+							<?php foreach ($permissions as $key => $value) { ?>
+					        	<div class="border mb-3 rounded-3">
+					        		<div class="border-bottom p-3 fw-bold">
+					        			<?=$key?>
+					        		</div>
+					        		<div class="card-body pt-4 ps-3 pe-3 pb-3">
+					        			<div class="row">
+											<?php foreach ($value as $pkey => $pdata) { ?>
+												<div class="col-sm-3 mb-2">
+													<div class="form-check">
+													  <input class="form-check-input permission-item" id="<?=$pkey;?>" type="checkbox" name="permissions[<?=$pkey;?>]" value="<?=$pkey;?>" <?=$checkper[$pkey]??''==$pkey?'checked':''?>>
+													  <label class="form-check-label ps-2 pt-1" for="<?=$pkey;?>">
+													  	<?=$pdata;?>
+													  </label>
+													</div>
+												</div>
+											<?php } ?>
+										</div>
+					        		</div>
+					        	</div>
+							<?php } ?>
+						</div>
+						<div class="col-lg-12">
+							<button type="submit" class="btn btn-primary w-100 py-3 rounded-pill fw-bold" data-action="submit" data-alert="true" data-load="this"><?=$jatbi->lang("Hoàn thành")?></button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

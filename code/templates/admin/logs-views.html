@@ -1,0 +1,16 @@
+<div class="modal fade modal-load" tabindex="-1">
+	<div class="modal-dialog modal-lg pt-standalone">
+		<div class="modal-content rounded-5">
+			<div class="d-flex w-100 justify-content-end align-items-center position-relative">
+				<button type="button" class="btn btn-primary position-absolute z-1 rounded-circle d-flex align-items-center justify-content-center width height top right" data-bs-dismiss="modal" aria-label="Close " style="--width:50px;--height:50px;--top:-5px;--right:-5px">
+					<i class="ti ti-x fs-4"></i>
+				</button>
+			</div>
+			<div class="modal-body">
+				<pre class="text-start">
+					<?=print_r(json_decode($data['content']))?>
+				</pre>
+			</div>
+		</div>
+	</div>
+</div>

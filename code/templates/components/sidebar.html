@@ -1,0 +1,157 @@
+<div class="header min-height bg-blur bg-body bg-opacity-50 position-fixed w-100 top-0 pt-standalone z-index align-items-center d-flex" style="--min-height:60px;--blur:20px;--index:100">
+  <div class="w-100 d-flex align-items-center justify-content-between p-1 px-3">
+    <div class="d-flex align-items-center">
+      <a href="/" class="me-2">
+         <img src="<?=$setting['template']?>/assets/img/logo-dark.svg" class="img-fluid width logo-dark p-1" alt="logo" style="--width:90px">
+         <img src="<?=$setting['template']?>/assets/img/logo.svg" class="img-fluid width logo-light p-1" alt="logo" style="--width:90px">
+      </a>
+      <button class="btn border-0 bg-body bg-opacity-10 text-muted fs-4 d-lg-flex d-none d-flex align-items-center justify-content-center btn-light rounded-circle p-2 width height" style="--width:45px;--height:45px" type="button" data-toggle-sidebar aria-label="Menu">
+        <i class="ti ti-layout-sidebar-inactive"></i>
+      </button>
+      <button class="btn border-0 bg-body bg-opacity-10 text-muted fs-4 d-flex d-lg-none align-items-center justify-content-center btn-light rounded-circle p-2 width height" style="--width:45px;--height:45px" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu" aria-label="Menu">
+        <i class="ti ti-layout-sidebar-inactive"></i>
+      </button>
+      <form class="form-search d-none" data-pjax action="/search">
+          <div class="input-group ">
+            <span class="input-group-text bg-body border-0 rounded-start-pill"><i class="ti ti-search"></i></span>
+            <input type="search" name="keywords" class="form-control border-0 bg-body border-start-0 rounded-end-pill py-2" placeholder="<?=$jatbi->lang('Tìm kiếm mọi thứ')?>">
+          </div>
+      </form>
+    </div>
+    <div class="d-flex justify-content-between align-items-center">
+      <button class="btn border-0 bg-body bg-opacity-10 text-muted fs-4 d-flex align-items-center justify-content-center btn-light rounded-circle p-2 width height" style="--width:40px;--height:40px" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="<?=$jatbi->lang('Tìm kiếm')?>">
+        <i class="ti ti-search"></i>
+      </button>
+      <div class="dropdown me-2">
+        <button class="btn border-0 bg-body bg-opacity-10 text-muted fs-4 d-flex align-items-center justify-content-center btn-light rounded-circle p-2 width height" style="--width:40px;--height:40px" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="<?=$jatbi->lang('Tiện ích')?>">
+          <i class="ti ti-layout-grid"></i>
+        </button>
+        <div class="dropdown-menu dropdown-menu-end border-0 p-3 shadow-lg rounded-4 min-width bg-blur" style="--min-width:500px;--min-width-xs:100vw">
+            <div class="row g-2">
+              <div class="col-lg-6 order-lg-1 order-1">
+                <div class="card bg-body-tertiary bg-opacity-50 border-0 rounded-4 shadow p-2 mb-2">
+                  <strong class="d-block p-2"><?=$jatbi->lang("Giao diện")?></strong>
+                  <a href="#" class="dropdown-item ms-0 d-flex align-items-center rounded-pill py-1 px-1" data-toggle-theme data-theme="light"><i class="ti ti-sun me-2 d-flex justify-content-center align-items-center width height bg-body-tertiary rounded-circle fs-5 text-body" style="--width:50px;--height:50px;"></i><?=$jatbi->lang("Sáng")?></a>
+                  <a href="#" class="dropdown-item ms-0 d-flex align-items-center rounded-pill py-1 px-1" data-toggle-theme data-theme="dark"><i class="ti ti-moon me-2 d-flex justify-content-center align-items-center width height bg-body-tertiary rounded-circle fs-5 text-body" style="--width:50px;--height:50px;"></i><?=$jatbi->lang("Tối")?></a>
+                  <a href="#" class="dropdown-item ms-0 d-flex align-items-center rounded-pill py-1 px-1" data-toggle-theme data-theme="system"><i class="ti ti-device-desktop-cog me-2 d-flex justify-content-center align-items-center width height bg-body-tertiary rounded-circle fs-5 text-body" style="--width:50px;--height:50px;"></i><?=$jatbi->lang("Hệ thống")?></a>
+                </div>
+                <div class="card bg-body-tertiary bg-opacity-50 border-0 rounded-4 shadow p-2 mb-2">
+                <strong class="d-block p-2"><?=$jatbi->lang("Ngôn ngữ")?></strong>
+                  <a href="/lang/vi" class="dropdown-item mb-2 py-2 rounded-pill" data-pjax>
+                    <svg class="width me-2" style="--width:25px" viewBox="0 -4 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g clip-path="url(#clip0_503_2795)"> <rect width="28" height="20" rx="2" fill="white"></rect> <mask id="mask0_503_2795" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="28" height="20"> <rect width="28" height="20" rx="2" fill="white"></rect> </mask> <g mask="url(#mask0_503_2795)"> <rect width="28" height="20" fill="#EA403F"></rect> <path fill-rule="evenodd" clip-rule="evenodd" d="M14 12.34L10.4733 14.8541L11.7745 10.7231L8.29366 8.1459L12.6246 8.1069L14 4L15.3754 8.1069L19.7063 8.1459L16.2255 10.7231L17.5267 14.8541L14 12.34Z" fill="#FFFE4E"></path> </g> </g> <defs> <clipPath id="clip0_503_2795"> <rect width="28" height="20" rx="2" fill="white"></rect> </clipPath> </defs> </g></svg>
+                    <?=$jatbi->lang("Tiếng Việt")?>
+                  </a>
+                  <a href="/lang/en" class="dropdown-item mb-2 py-2 rounded-pill" data-pjax>
+                    <svg class="width me-2" style="--width:25px" viewBox="0 -4 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g clip-path="url(#clip0_503_3486)"> <rect width="28" height="20" rx="2" fill="white"></rect> <mask id="mask0_503_3486" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="28" height="20"> <rect width="28" height="20" rx="2" fill="white"></rect> </mask> <g mask="url(#mask0_503_3486)"> <path fill-rule="evenodd" clip-rule="evenodd" d="M28 0H0V1.33333H28V0ZM28 2.66667H0V4H28V2.66667ZM0 5.33333H28V6.66667H0V5.33333ZM28 8H0V9.33333H28V8ZM0 10.6667H28V12H0V10.6667ZM28 13.3333H0V14.6667H28V13.3333ZM0 16H28V17.3333H0V16ZM28 18.6667H0V20H28V18.6667Z" fill="#D02F44"></path> <rect width="12" height="9.33333" fill="#46467F"></rect> <g filter="url(#filter0_d_503_3486)"> <path fill-rule="evenodd" clip-rule="evenodd" d="M2.66665 1.99999C2.66665 2.36818 2.36817 2.66666 1.99998 2.66666C1.63179 2.66666 1.33331 2.36818 1.33331 1.99999C1.33331 1.63181 1.63179 1.33333 1.99998 1.33333C2.36817 1.33333 2.66665 1.63181 2.66665 1.99999ZM5.33331 1.99999C5.33331 2.36818 5.03484 2.66666 4.66665 2.66666C4.29846 2.66666 3.99998 2.36818 3.99998 1.99999C3.99998 1.63181 4.29846 1.33333 4.66665 1.33333C5.03484 1.33333 5.33331 1.63181 5.33331 1.99999ZM7.33331 2.66666C7.7015 2.66666 7.99998 2.36818 7.99998 1.99999C7.99998 1.63181 7.7015 1.33333 7.33331 1.33333C6.96512 1.33333 6.66665 1.63181 6.66665 1.99999C6.66665 2.36818 6.96512 2.66666 7.33331 2.66666ZM10.6666 1.99999C10.6666 2.36818 10.3682 2.66666 9.99998 2.66666C9.63179 2.66666 9.33331 2.36818 9.33331 1.99999C9.33331 1.63181 9.63179 1.33333 9.99998 1.33333C10.3682 1.33333 10.6666 1.63181 10.6666 1.99999ZM3.33331 3.99999C3.7015 3.99999 3.99998 3.70152 3.99998 3.33333C3.99998 2.96514 3.7015 2.66666 3.33331 2.66666C2.96512 2.66666 2.66665 2.96514 2.66665 3.33333C2.66665 3.70152 2.96512 3.99999 3.33331 3.99999ZM6.66665 3.33333C6.66665 3.70152 6.36817 3.99999 5.99998 3.99999C5.63179 3.99999 5.33331 3.70152 5.33331 3.33333C5.33331 2.96514 5.63179 2.66666 5.99998 2.66666C6.36817 2.66666 6.66665 2.96514 6.66665 3.33333ZM8.66665 3.99999C9.03484 3.99999 9.33331 3.70152 9.33331 3.33333C9.33331 2.96514 9.03484 2.66666 8.66665 2.66666C8.29846 2.66666 7.99998 2.96514 7.99998 3.33333C7.99998 3.70152 8.29846 3.99999 8.66665 3.99999ZM10.6666 4.66666C10.6666 5.03485 10.3682 5.33333 9.99998 5.33333C9.63179 5.33333 9.33331 5.03485 9.33331 4.66666C9.33331 4.29847 9.63179 3.99999 9.99998 3.99999C10.3682 3.99999 10.6666 4.29847 10.6666 4.66666ZM7.33331 5.33333C7.7015 5.33333 7.99998 5.03485 7.99998 4.66666C7.99998 4.29847 7.7015 3.99999 7.33331 3.99999C6.96512 3.99999 6.66665 4.29847 6.66665 4.66666C6.66665 5.03485 6.96512 5.33333 7.33331 5.33333ZM5.33331 4.66666C5.33331 5.03485 5.03484 5.33333 4.66665 5.33333C4.29846 5.33333 3.99998 5.03485 3.99998 4.66666C3.99998 4.29847 4.29846 3.99999 4.66665 3.99999C5.03484 3.99999 5.33331 4.29847 5.33331 4.66666ZM1.99998 5.33333C2.36817 5.33333 2.66665 5.03485 2.66665 4.66666C2.66665 4.29847 2.36817 3.99999 1.99998 3.99999C1.63179 3.99999 1.33331 4.29847 1.33331 4.66666C1.33331 5.03485 1.63179 5.33333 1.99998 5.33333ZM3.99998 5.99999C3.99998 6.36819 3.7015 6.66666 3.33331 6.66666C2.96512 6.66666 2.66665 6.36819 2.66665 5.99999C2.66665 5.6318 2.96512 5.33333 3.33331 5.33333C3.7015 5.33333 3.99998 5.6318 3.99998 5.99999ZM5.99998 6.66666C6.36817 6.66666 6.66665 6.36819 6.66665 5.99999C6.66665 5.6318 6.36817 5.33333 5.99998 5.33333C5.63179 5.33333 5.33331 5.6318 5.33331 5.99999C5.33331 6.36819 5.63179 6.66666 5.99998 6.66666ZM9.33331 5.99999C9.33331 6.36819 9.03484 6.66666 8.66665 6.66666C8.29846 6.66666 7.99998 6.36819 7.99998 5.99999C7.99998 5.6318 8.29846 5.33333 8.66665 5.33333C9.03484 5.33333 9.33331 5.6318 9.33331 5.99999ZM9.99998 8C10.3682 8 10.6666 7.70152 10.6666 7.33333C10.6666 6.96514 10.3682 6.66666 9.99998 6.66666C9.63179 6.66666 9.33331 6.96514 9.33331 7.33333C9.33331 7.70152 9.63179 8 9.99998 8ZM7.99998 7.33333C7.99998 7.70152 7.7015 8 7.33331 8C6.96512 8 6.66665 7.70152 6.66665 7.33333C6.66665 6.96514 6.96512 6.66666 7.33331 6.66666C7.7015 6.66666 7.99998 6.96514 7.99998 7.33333ZM4.66665 8C5.03484 8 5.33331 7.70152 5.33331 7.33333C5.33331 6.96514 5.03484 6.66666 4.66665 6.66666C4.29846 6.66666 3.99998 6.96514 3.99998 7.33333C3.99998 7.70152 4.29846 8 4.66665 8ZM2.66665 7.33333C2.66665 7.70152 2.36817 8 1.99998 8C1.63179 8 1.33331 7.70152 1.33331 7.33333C1.33331 6.96514 1.63179 6.66666 1.99998 6.66666C2.36817 6.66666 2.66665 6.96514 2.66665 7.33333Z" fill="url(#paint0_linear_503_3486)"></path> </g> </g> </g> <defs> <filter id="filter0_d_503_3486" x="1.33331" y="1.33333" width="9.33331" height="7.66667" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"> <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood> <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix> <feOffset dy="1"></feOffset> <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0"></feColorMatrix> <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_503_3486"></feBlend> <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_503_3486" result="shape"></feBlend> </filter> <linearGradient id="paint0_linear_503_3486" x1="1.33331" y1="1.33333" x2="1.33331" y2="7.99999" gradientUnits="userSpaceOnUse"> <stop stop-color="white"></stop> <stop offset="1" stop-color="#F0F0F0"></stop> </linearGradient> <clipPath id="clip0_503_3486"> <rect width="28" height="20" rx="2" fill="white"></rect> </clipPath> </defs> </g></svg>
+                    <?=$jatbi->lang("Tiếng Anh")?>
+                  </a>
+                </div>
+              </div>
+              <div class="col-lg-6 order-lg-2 order-2">
+                <div class="card bg-body-tertiary bg-opacity-50 border-0 rounded-4 shadow p-2">
+                     <div class="bg-primary bg-opacity-10 p-4">
+                        <h3 class="mb-0 text-primary fw-bold"><?=$jatbi->lang("ECLO")?></h3>
+                        <small class="d-block mb-3"><?=$jatbi->lang("Giải pháp phần mềm ERP quản lý dành cho doanh nghiệp")?></small>
+                        <a href="https://eclo.vn" target="_blank" class="btn btn btn-warning rounded-pill fw-bold w-100"><?=$jatbi->lang("Xem thêm")?></a>
+                      </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      <button class="btn border-0 bg-body bg-opacity-10 text-muted fs-4 d-flex align-items-center justify-content-center btn-light rounded-circle p-2 width height" style="--width:40px;--height:40px" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="<?=$jatbi->lang('Tín nhắn')?>">
+        <i class="ti ti-message"></i>
+      </button>
+      <div class="dropdown position-relative me-2">
+        <button class="btn border-0 bg-body bg-opacity-10 text-muted fs-4 d-flex align-items-center justify-content-center btn-light rounded-circle p-2 width height" style="--width:40px;--height:40px" type="button" data-action="offcanvas" data-url="/notification" aria-label="<?=$jatbi->lang('Thông báo')?>">
+          <i class="ti ti-bell"></i>
+        </button>
+        <div class="count-notification" pjax-load-content >
+          <span class="position-absolute <?=($notification==0?'':'bg-danger')?> text-light fw-bold count-notification-number p-2 rounded-circle d-flex justify-content-center align-items-center small top-0 end-0" style="width: 15px;height: 15px;font-size: 11px;">
+            <?=$notification>9?'9+':($notification==0?'':$notification)?>
+          </span>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="btn border-0 bg-body bg-opacity-10 text-muted fs-4 d-flex align-items-center justify-content-center btn-light rounded-circle p-2 width height" style="--width:40px;--height:40px" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasUser" aria-controls="offcanvasUser" aria-label="<?=$jatbi->lang('Tài khoản')?>">
+           <img data-src="/<?=$account['avatar']?>?type=thumb" alt="<?=$account['name']?>" class="rounded-circle lazyload width height" style="--width:45px40pxheight:40px">
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="offcanvas-lg width offcanvas-start bg-body bg-opacity-50" style="--width:280px;--blur:10px;" tabindex="-1" data-bs-scroll="true" id="offcanvasMenu" aria-labelledby="offcanvasMenuContent">
+  <div class="offcanvas-body p-0">
+    <div class="sidebar bg-blur bg-body bg-opacity-50 z-index" style="--index:99;">
+      <div class="navbar px-2  pt-standalone">
+        <div class="accordion accordion-flush w-100" id="accordionSidebar" pjax-load-content >
+          <?php foreach($SelectMenu as $key => $request){ ?>
+            <div class="caption">
+              <label><?=$request['name']?></label>
+            </div>
+            <?php if(isset($request['items'])){ ?>
+              <?php foreach($request['items'] as $key_item => $item){ ?>
+                <div class="accordion-item border-0 bg-transparent mb-0">
+                    <a class="py-2 rounded-pill d-flex align-items-center link text-body-secondary collapsed" data-pjax <?=isset($item['sub'])?'data-bs-toggle="collapse" data-bs-target="#flush-'.$key_item.'" aria-expanded="false" aria-controls="flush-'.$key_item.'" href="#"':'href="'.$item['url'].'"'?> >
+                      <span class="fs-5 me-2 text-body-tertiary">
+                        <?=$item['icon']?>
+                      </span>
+                      <span class="sidebar-name"><?=$item['menu']?></span>
+                    </a>
+                  <?php if(isset($item['sub'])){ ?>
+                    <div id="flush-<?=$key_item?>"  class="accordion-collapse collapse <?=$getRouter[1]==$key_item?'show':''?>" data-bs-parent="#accordionSidebar">
+                      <ul class="nav flex-column">
+                          <?php foreach($item['sub'] as $key_sub => $sub){ ?>
+                          <li class="nav-item">
+                              <a class="ms-3 link-secondary d-block p-2 <?=$getRouter[2]==$key_sub?'active':''?>" data-pjax href="<?=$sub['router']?>"><i class="ti ti-circle-dot me-3"></i> <?=$sub['name']?></a>
+                          </li>
+                          <?php } ?>
+                      </ul>
+                    </div>
+                  <?php } ?>
+                </div>
+              <?php } ?>
+            <?php } ?>
+          <?php } ?>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="offcanvas offcanvas-end bg-blur bg-body border-0 width pt-standalone" style="--width:280px" tabindex="-1" id="offcanvasUser" aria-labelledby="offcanvasUserLabel">
+  <div class="justify-content-center align-items-center">
+    <div class="offcanvas-header p-1">
+      <div class="d-flex px-2 pt-3 pb-0 align-items-center w-100">
+        <div class="flex-shrink-0">
+          <img data-src="/<?=$account['avatar']?>?type=thumb" alt="<?=$account['name']?>" class="rounded-circle lazyload  width height" style="--width:50px;--height:50px">
+        </div>
+        <div class="flex-grow-1 ms-2">
+          <h6 class="mb-0"><?=$account['name']?></h6>
+          <span class="small"><?=$account['email']?></span>
+        </div>
+      </div>
+    </div>
+    <hr class="border-secondary border-opacity-50 my-2">
+  </div>
+  <div class="offcanvas-body p-0">
+    <div class="px-3">
+      <p class="text-muted small"><?=$jatbi->lang("Quản lý")?></p>
+      <a href="/social/profile/" class="dropdown-item mb-2 py-2 rounded-pill" data-pjax><i class="ti ti-social me-2"></i><?=$jatbi->lang("Trang cá nhân")?></a>
+      <a href="/users/profile" class="dropdown-item mb-2 py-2 rounded-pill" data-pjax><i class="ti ti-user me-2"></i><?=$jatbi->lang("Tài khoản")?></a>
+      <a href="/users/notification" class="dropdown-item mb-2 py-2 rounded-pill" data-pjax><i class="ti ti-bell me-2"></i><?=$jatbi->lang("Thông báo")?></a>
+      <a href="/users/logs" class="dropdown-item mb-2 py-2 rounded-pill" data-pjax><i class="ti ti-database me-2"></i><?=$jatbi->lang("Nhật ký")?></a>
+      <a href="/users/settings" class="dropdown-item mb-2 py-2 rounded-pill" data-pjax><i class="ti ti-settings me-2"></i><?=$jatbi->lang("Cài đặt")?></a>
+    </div>
+    <hr class="border-secondary border-opacity-50">
+    <div class="d-grid mb-3 px-3">
+      <a href="/logout" class="btn btn-primary py-2 rounded-pill"><i class="ti ti-logout me-2"></i><?=$jatbi->lang("Đăng xuất")?></a>
+    </div>
+  </div>
+  <div class="offcanvas-footer">
+    <div class="bg-primary bg-opacity-10 p-4">
+      <h3 class="mb-0 text-primary fw-bold"><?=$jatbi->lang("ECLO")?></h3>
+      <small class="d-block mb-3"><?=$jatbi->lang("Giải pháp phần mềm ERP quản lý dành cho doanh nghiệp")?></small>
+      <a href="https://eclo.vn" target="_blank" class="btn btn btn-warning rounded-pill fw-bold w-100"><?=$jatbi->lang("Xem thêm")?></a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="offcanvas offcanvas-end pt-standalone h-100 offcanvas-load bg-blur bg-body bg-opacity-100 border-0 width" tabindex="-1" id="offcanvasNotification" aria-labelledby="offcanvasNotificationLabel" style="--width:300px;"">
+	<div class="container">
+		<div class="row justify-content-center align-items-center">
+			<div class="offcanvas-header">
+				<div class="d-flex justify-content-between align-items-center w-100 ">
+					<h6 class="mb-0 fw-bold text-nowrap"><?=$jatbi->lang('Thông báo')?></h6>
+					<button type="button" class="btn p-0 d-flex fs-3 align-items-center justify-content-end w-100 border-0 me-3" data-bs-dismiss="offcanvas" aria-label="Close">
+						<i class="ti ti-x"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="offcanvas-body p-0">
+		<?php foreach($datas as $data){ ?>
+			<div class="p-3 mb-2 position-relative item-list">
+				<div class="d-flex justify-content-between align-items-start">
+					<div class="w-100">
+						<div class="row">
+							<div class="col-6 text-truncate fw-bold">
+								<div class="width height bg-<?=$data['views']>0?'secondary':'danger'?> rounded-circle d-inline-block me-2" style="--width:10px;--height:10px"></div>
+								<a <?=$data['template']=='url'?'href="/admin/notification/'.$data['active'].'"':'data-action="modal" data-url="/admin/notification/'.$data['active'].'"'?> class="btn p-0 border-0 bg-transparent stretched-link text-capitalize" <?=$data['template']=='url'?'data-pjax':''?>>
+									<span class="text-body fw-bold"><?=$jatbi->lang($data['title'])?></span></a>
+							</div>
+							<div class="col-6 text-end">
+								<span class="small text-secondary"><?=$data['date']?></span>
+							</div>
+						</div>
+						<div class="col-12 text-truncate text-secondary">
+							<?php
+								if (isset($data['data']) && $data['data'] != '') {
+								    $getdata = json_decode($data['data']);
+								} else {
+								    $getdata = null;
+								}
+								$getacc = $app->get("accounts", "name", ["id" => $data['user']]);
+								$content = $jatbi->lang($data['content']);
+								$content = str_replace("[account]", $getacc, $content);
+								if ($getdata && isset($getdata->content)) {
+								    $content = str_replace("[content]", number_format($getdata->content), $content);
+								} else {
+								    $content = str_replace("[content]", "0", $content);
+								}
+								echo $content;
+							?>
+						</div>
+					</div>
+				</div>
+			</div>
+			<hr class="border-secondary border-opacity-50 my-2">
+		<?php } ?>
+	</div>
+	<div class="offcanvas-footer p-2 text-center">
+		<button data-url="/users/notification-read" data-action="click" data-alert="true" data-bs-dismiss="offcanvas" data-remove="body .count-notification .count-notification-number" data-load="this" class="btn btn-primary rounded-pill"><?=$jatbi->lang("Đánh dấu đã đọc")?></button>
+	</div>
+</div>

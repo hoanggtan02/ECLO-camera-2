@@ -1,0 +1,70 @@
+<div class="container">
+	<div class="mb-3 d-flex justify-content-between align-items-center">
+        <div>
+            <h4 class="mb-0 fw-bold text-body"><?=$title?></h4>
+            <ul class="breadcrumb small mb-0">
+                <li class="breadcrumb-item small">
+                    <a href="/" class="pjax-load link-secondary"><?=$jatbi->lang("Trang chủ")?></a>
+                </li>
+                <li class="breadcrumb-item small text-body" aria-current="page"><?=$title?></li>
+            </ul>
+        </div>
+        <div class="filter-search">
+            <div class="d-flex align-items-center justify-content-end">
+                <div class="dropdown">
+                    <button class="btn btn-primary-light border-0 rounded-pill small d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" >
+                        <i class="ti ti-filter fs-5 me-2"></i> <?=$jatbi->lang("Điều kiện lọc")?>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end border-0 shadow-lg rounded-4 min-width bg-blur" style="--min-width:300px;--min-width-xs:100vw">
+                        <div class="fw-semibold py-2 px-3">
+                            <?=$jatbi->lang("Điều kiện lọc")?>
+                        </div>
+                        <hr class="border-secondary border-opacity-50 my-2">
+                        <div class="px-3">
+                           <?=$app->component('select',[
+                                "name"=>'status',
+                                "placeholder"=>$jatbi->lang("Trạng thái"),
+                                "selected" => $app->xss($_GET['status'] ?? ''),
+                                "class" => 'filter-name',
+                                "attr" => 'data-width="100%"',
+                                "options" => [["value"=>"A","text"=>$jatbi->lang("Kích hoạt")],["value"=>"D","text"=>$jatbi->lang("Không Kích hoạt")],]
+                            ])?>
+                        </div>
+                        <hr class="border-secondary border-opacity-50 my-2">
+                        <div class="px-3 py-2 text-end w-100">
+                            <button type="button" class="btn btn-light px-3 rounded-pill py-2 reset-filter"><?=$jatbi->lang("Làm mới")?></button>
+                            <button type="button" class="btn btn-primary px-3 rounded-pill py-2 button-filter"><?=$jatbi->lang("Tìm")?></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	<div class="card bg-body bg-opacity-50 shadow border-0 rounded-4">
+		<div class="card-body">
+            <table id="datatable" 
+                    data-table 
+                    class="table align-middle" 
+                    data-type="POST" 
+                    data-server="true" 
+                    data-processing="true" 
+                    data-page-length="10"
+                    data-searching="true"
+                    data-paging="true"
+                    data-state-save='true'
+                    style="width:100%">
+                <thead>
+                    <tr>
+                        <th data-name="user" data-orderable="true" class="text-nowrap" data-class="text-nowrap"><?=$jatbi->lang("Tài khoản")?></th>
+                        <th data-name="dispatch" data-orderable="true" class="text-nowrap" data-class="text-nowrap"><?=$jatbi->lang("Patch")?></th>
+                        <th data-name="action" data-orderable="true" class="text-nowrap"  data-class="text-nowrap"><?=$jatbi->lang("Hành động")?></th>    
+                        <th data-name="ip" data-orderable="true" class="text-nowrap"  data-class="text-nowrap"><?=$jatbi->lang("IP")?></th>                
+                        <th data-name="date" data-orderable="true" class="text-nowrap"  data-class="text-nowrap"><?=$jatbi->lang("Ngày")?></th>            
+                        <th data-name="url" data-orderable="true" class="text-nowrap" ><?=$jatbi->lang("URL")?></th>      
+                        <th data-name="views" data-orderable="false" class="text-nowrap text-end" data-class="text-end"><?=$jatbi->lang("Tùy chọn")?></th>      
+                    </tr>
+                </thead>
+            </table>
+		</div>
+	</div>
+</div>

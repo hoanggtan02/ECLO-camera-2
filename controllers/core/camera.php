@@ -63,7 +63,7 @@ $app->router("/camera/rec", 'POST', function($vars) use ($app, $jatbi) {
             "1" => $jatbi->lang("Người lạ"),
         ];
         $imageHtml = $data['image_path']
-            ? '<img src=/templates/public/' . $data['image_path'] . '" alt="Face" class="img-thumbnail" style="width: 60px; height: auto;">'
+            ? '<img src="/public/'.$data['image_path'].'" alt="Face" class="img-thumbnail" style="width: 60px; height: auto;">'
             : $jatbi->lang('Không có ảnh');
 
         return [

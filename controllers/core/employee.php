@@ -59,7 +59,6 @@ $app->router("/employee", 'POST', function($vars) use ($app, $jatbi) {
     $searchValue = $_POST['search']['value'] ?? '';
     $orderColumnIndex = $_POST['order'][0]['column'] ?? 1;
     $orderDir = strtoupper($_POST['order'][0]['dir'] ?? 'DESC');
-    // Sửa lại: Ánh xạ các cột ảo (index 0 và 8) vào một cột thật trong DB
     $validColumns = [
         "creation_time", // 0: Mặc định cho checkbox
         "sn",            // 1
@@ -78,12 +77,19 @@ $app->router("/employee", 'POST', function($vars) use ($app, $jatbi) {
         $conditions["OR"] = ["sn[~]" => $searchValue, "person_name[~]" => $searchValue, "telephone[~]" => $searchValue];
     }
     
-    $where = ["LIMIT" => [$start, $length], "ORDER" => [$orderColumn => $orderDir]];
-    if (!empty($conditions)) { $where["AND"] = $conditions; }
+    // Xây dựng tham số cho Medoo
+    $medooSelectOptions = [
+        "ORDER" => [$orderColumn => $orderDir],
+        "LIMIT" => [$start, $length]
+    ];
+    if (!empty($conditions)) { 
+        $medooSelectOptions["AND"] = $conditions; 
+    }
 
     $totalRecords = $app->count("employee");
-    $filteredRecords = $app->count("employee", !empty($conditions) ? ["AND" => $conditions] : []);
-    $datas = $app->select("employee", "*", $where) ?? [];
+    $filteredRecords = $app->count("employee", !empty($conditions) ? ["AND" => $conditions] : []); // Điều kiện tìm kiếm cho filteredRecords
+
+    $datas = $app->select("employee", "*", $medooSelectOptions) ?? []; // Truyền các options đã xây dựng vào select
     
     $envPath = __DIR__ . '/../../.env';
     $env = file_exists($envPath) ? parse_ini_file($envPath) : [];
@@ -91,23 +97,53 @@ $app->router("/employee", 'POST', function($vars) use ($app, $jatbi) {
 
     $formattedData = array_map(function($data) use ($app, $jatbi, $publicBaseUrl) {
         $genderLabels = ["1" => $jatbi->lang("Nam"), "2" => $jatbi->lang("Nữ"), "3" => $jatbi->lang("Khác")];
-        $imageSrc = $data['registration_photo'] ?? '';
+        $imageSrc = (string) ($data['registration_photo'] ?? ''); // Đảm bảo chuỗi, không null
         if (!empty($imageSrc) && strpos($imageSrc, 'http') !== 0) {
             $imageSrc = $publicBaseUrl . '/' . ltrim($imageSrc, '/');
         }
-        $photoHtml = !empty($imageSrc) ? '<img src="' . htmlspecialchars($imageSrc) . '" alt="Photo" class="img-thumbnail" style="width: 60px; height: auto;">' : $jatbi->lang('Chưa có ảnh');
+        $photoHtml = !empty($imageSrc) ? '<img src="public/' . htmlspecialchars($imageSrc) . '" alt="Photo" class="img-thumbnail" style="width: 60px; height: auto;">' : $jatbi->lang('Chưa có ảnh');
         
+        // --- BẮT ĐẦU SỬA LỖI DEPRECATED ---
+        $sn_val = (string) ($data['sn'] ?? '');
+        $person_name_val = (string) ($data['person_name'] ?? '');
+        $telephone_val = (string) ($data['telephone'] ?? '');
+        $gender_val = (string) ($data['gender'] ?? '');
+        $birthday_val = (string) ($data['birthday'] ?? '');
+        $creation_time_val = (string) ($data['creation_time'] ?? '');
+
+
 
         return [
-            "checkbox" => '<div class="form-check d-flex justify-content-center"><input class="form-check-input employee-checker" type="checkbox" value="' . htmlspecialchars($data['sn']) . '"></div>',
-            "sn" => htmlspecialchars($data['sn']),
+            "checkbox" => $app->component("box", ["data" => $data['id']]),
+            "sn" => htmlspecialchars($sn_val),
             "registration_photo" => $photoHtml,
-            "person_name" => htmlspecialchars($data['person_name']),
-            "telephone" => htmlspecialchars($data['telephone']),
-            "gender" => $genderLabels[$data['gender']] ?? $jatbi->lang("Không xác định"),
-            "birthday" => $data['birthday'] ? date('d/m/Y', strtotime($data['birthday'])) : 'N/A',
-            "creation_time" => date('H:i:s d/m/Y', strtotime($data['creation_time'])),
-            "action" => "   "
+            "person_name" => htmlspecialchars($person_name_val),
+            "telephone" => htmlspecialchars($telephone_val),
+            "gender" => $genderLabels[$gender_val] ?? $jatbi->lang("Không xác định"),
+            "birthday" => $birthday_val ? date('d/m/Y', strtotime($birthday_val)) : 'N/A',
+            "creation_time" => $creation_time_val ? date('H:i:s d/m/Y', strtotime($creation_time_val)) : 'N/A',
+            "action" => $app->component("action", [
+                "button" => [
+                    [
+                        'type' => 'button',
+                        'name' => $jatbi->lang("Sửa"),
+                        'permission' => ['employee'],
+                        'action' => [
+                            'data-url' => '/admin/library-edit?id=' . $data['id'],
+                            'data-action' => 'modal'
+                        ]
+                    ],
+                    [
+                        'type' => 'button',
+                        'name' => $jatbi->lang("Xóa"),
+                        'permission' => ['employee'],
+                        'action' => [
+                            'data-url' => '/admin/library-delete?id=' . $data['id'],
+                            'data-action' => 'modal'
+                        ]
+                    ]
+                ]
+            ])
         ];
     }, $datas);
 

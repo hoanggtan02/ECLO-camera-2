@@ -1,10 +1,5 @@
 <?php
 
-// File: persistent_listener.php
-// Chạy file này bằng Supervisor hoặc Docker để đảm bảo hoạt động 24/7
-
-error_log("Khởi động MQTT Listener...");
-error_log("Script is running as user: " . get_current_user());
 
 require __DIR__ . '/../../vendor/autoload.php';
 
@@ -254,7 +249,8 @@ try {
             $imageHash = md5($picBase64);
             $redisKey = 'snap_cooldown:' . $imageHash;
             $lockKey = 'snap_lock:' . $imageHash;
-            $lockAcquired = $redis->set($lockKey, 1, ['NX', 'EX' => 10]); // Khóa 10 giây
+            $lockAcquired = $redis->set($lockKey, 1, 'NX', 'EX', 10);
+
 
             if (!$lockAcquired) {
                 error_log("ℹ️ [SNAP] Bỏ qua vì tin nhắn đang được xử lý bởi luồng khác.");

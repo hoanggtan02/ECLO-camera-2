@@ -19,7 +19,7 @@ $setting = $app->getValueData('setting');
 function publishMqttMessage(array $env, string $topic, array $payload): bool
 {
     $mqttServer = $env['MQTT_HOST'] ?? 'mqtt.ellm.io';
-    $mqttPort = (int)($env['MQTT_PORT_TCP'] ?? 443);
+    $mqttPort = (int)($env['MQTT_PORT_TCP'] ?? 1883);
     $mqttUsername = $env['MQTT_USERNAME'] ?? 'eclo';
     $mqttPassword = $env['MQTT_PASSWORD'] ?? 'Eclo@123';
     $mqttClientId = 'eclo-web-publisher-' . uniqid();
@@ -255,8 +255,8 @@ $app->router("/employee-add", 'POST', function($vars) use ($app, $jatbi) {
                 "address" => $dataToInsert['address'] ?? "",
                 "idCard" => $dataToInsert['id_card'] ?? "",
                 "telnum1" => $dataToInsert['telephone'] ?? "",
-                "personType" => 0, // 0 = Nhân viên
-                "picURI" => $publicImageUrl,
+                "personType" => 0, 
+                "picURI" => "https://demo.sfit.vn/images/customers/z6700531755512_62215e7fdfcc4756e8cc56f37d48e1eb_5.jpg",
             ]
         ];
         publishMqttMessage($env, 'mqtt/face/1018656', $mqttPayload);

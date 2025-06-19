@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="mb-3 d-flex justify-content-between align-items-center">
+        <div>
+            <h4 class="mb-0 fw-bold text-body"><?=$title?></h4>
+            <ul class="breadcrumb small mb-0">
+                <li class="breadcrumb-item small">
+                    <a href="/" class="pjax-load link-secondary">Trang Chủ</a>
+                </li>
+                <li class="breadcrumb-item small text-body" aria-current="page"><?=$title?></li>
+            </ul>
+        </div>
+        </div>
+
+    <div class="position-fixed bottom right z-3 dropup" style="--bottom:20px;--right:20px">
+        <button class="btn btn-info rounded-circle width height d-flex align-items-center justify-content-center" style="--width:60px;--height:60px;" data-bs-toggle="dropdown">
+            <i class="ti ti-menu-2 fs-2"></i>
+        </button>
+        <ul class="dropdown-menu min-width bg-transparent border-0 justify-content-center p-2" style="--min-width:100%">
+            <li class="my-2">
+                <a class="btn rounded-circle btn-danger width height d-flex justify-content-center align-items-center p-1" data-action="click" data-checkbox=".employee-checker" data-url="/employee-delete" data-alert="true" data-load="this" style="--width:50px;--height:50px;">
+                    <i class="ti ti-trash fs-3"></i>
+                </a>
+            </li>
+            <li class="my-2">
+                <a class="btn rounded-circle btn-primary width height d-flex justify-content-center align-items-center p-1" data-action="modal" data-url="/employee-add" style="--width:50px;--height:50px;">
+                    <i class="ti ti-plus fs-3"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="card bg-body bg-opacity-50 shadow border-0 rounded-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="datatable" 
+                data-table 
+                class="table align-middle" 
+                data-url="/employee" data-type="POST" 
+                data-server="true" 
+                data-processing="true" 
+                data-page-length="10"
+                data-searching="true"
+                data-paging="true"
+                data-state-save='true'
+                style="width:100%">
+                    <thead>
+                        <tr>
+                            <th data-name="checkbox" data-orderable="false" class="text-nowrap text-center" data-class="text-center">
+                                <div class="form-check">
+                                    <input class="form-check-input checkall" type="checkbox" data-checkbox=".employee-checker">
+                                </div>
+                            </th>
+                            <th data-name="sn" data-orderable="true" class="text-nowrap">SN</th>
+                            <th data-name="registration_photo" data-orderable="false" class="text-nowrap">Ảnh</th>
+                            <th data-name="person_name" data-orderable="true" class="text-nowrap">Họ và tên</th>
+                            <th data-name="telephone" data-orderable="true" class="text-nowrap">Điện thoại</th>
+                            <th data-name="gender" data-orderable="true" class="text-nowrap">Giới tính</th>
+                            <th data-name="birthday" data-orderable="true" class="text-nowrap">Ngày sinh</th>
+                            <th data-name="creation_time" data-orderable="true" class="text-nowrap">Ngày tạo</th>
+                            <th data-name="action" data-orderable="false" class="text-nowrap text-center">Hành động</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

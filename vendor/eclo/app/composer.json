@@ -1,0 +1,32 @@
+{
+    "name": "eclo/app",
+    "version": "1.2.2",
+    "description": "A simple framework library",
+    "type": "library",
+    "homepage":"https://eclo.vn",
+    "keywords": ["framework", "simple", "ECLO"],
+    "autoload": {
+        "psr-4": {
+            "ECLO\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=8.1",
+        "catfan/medoo": "^2.1",
+        "firebase/php-jwt": "^6.9",
+        "verot/class.upload.php": "^2.1",
+        "phpmailer/phpmailer": "^6.9",
+        "matthiasmullie/minify": "^1.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ECLO",
+            "email": "info@eclo.vn"
+        }
+    ],
+    "support":{
+        "email":"info@eclo.vn"
+    },
+    "minimum-stability": "stable"
+}

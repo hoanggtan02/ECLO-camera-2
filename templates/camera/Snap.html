@@ -1,0 +1,50 @@
+    <div class="container">
+        <div class="mb-3 d-flex justify-content-between align-items-center">
+            <div>
+                <h4 class="mb-0 fw-bold text-body"><?=$title?></h4>
+                <ul class="breadcrumb small mb-0">
+                    <li class="breadcrumb-item small">
+                        <a href="/" class="pjax-load link-secondary">Trang chủ</a>
+                    </li>
+                    <li class="breadcrumb-item small text-body" aria-current="page">
+                        <?=$title?>
+                    </li>
+                </ul>
+            </div>
+            <div class="filter-search">
+                <div class="d-flex align-items-center justify-content-end">
+
+                </div>
+            </div>
+        </div>
+        
+        <div class="position-fixed bottom right z-3 dropup-center dropup" style="--bottom: 20px; --right: 20px">
+            <button class="btn btn-danger rounded-circle width height d-flex align-items-center justify-content-center" style="--width: 60px; --height: 60px" data-action="modal" data-checkbox="input.checker" data-url="/camera/delete-records" title="Xóa các mục đã chọn">
+                <i class="ti ti-trash fs-2" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <div class="card bg-body bg-opacity-50 shadow border-0 rounded-4">
+            <div class="card-body">
+<table id="datatable" 
+       data-table
+       data-url="/camera/snap" 
+       data-server="true"
+       data-processing="true"
+       data-event-type="snap">
+    <thead>
+        <tr>
+            <th data-name="id">ID</th>
+            <th data-name="image_path" data-orderable="false">Hình ảnh</th>
+            <th data-name="person_name">Tên đối tượng</th>
+            <th data-name="event_time">Thời gian</th>
+            <th data-name="is_no_mask" data-orderable="false">Khẩu trang</th>
+        </tr>
+    </thead>
+</table>
+            </div>
+        </div>
+    </div>
+
+
+    

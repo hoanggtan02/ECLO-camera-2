@@ -29,7 +29,7 @@ function publishMqttMessage(array $env, string $topic, array $payload): bool
         $connectionSettings = (new ConnectionSettings)
             ->setUsername($mqttUsername)
             ->setPassword($mqttPassword)
-            ->setConnectTimeout(5);
+            ->setConnectTimeout(5); 
         $mqtt->connect($connectionSettings, true);
         $mqtt->publish($topic, json_encode($payload, JSON_UNESCAPED_UNICODE), 0);
         $mqtt->disconnect();
@@ -101,7 +101,7 @@ $app->router("/employee", 'POST', function($vars) use ($app, $jatbi) {
         if (!empty($imageSrc) && strpos($imageSrc, 'http') !== 0) {
             $imageSrc = $publicBaseUrl . '/' . ltrim($imageSrc, '/');
         }
-        $photoHtml = !empty($imageSrc) ? '<img src="public/' . htmlspecialchars($imageSrc) . '" alt="Photo" class="img-thumbnail" style="width: 60px; height: auto;">' : $jatbi->lang('Chưa có ảnh');
+        $photoHtml = !empty($imageSrc) ? '<img src="public' . htmlspecialchars($imageSrc) . '" alt="Photo" class="img-thumbnail" style="width: 60px; height: auto;">' : $jatbi->lang('Chưa có ảnh');
         
         // --- BẮT ĐẦU SỬA LỖI DEPRECATED ---
         $sn_val = (string) ($data['sn'] ?? '');
